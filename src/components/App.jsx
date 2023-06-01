@@ -22,34 +22,35 @@ export const App = () => {
     setImagesArray([])
   }
 
-
   useEffect(() => {
+  const arrayOfImages = () => {
+    fetchData(searchValue, currentPage)
+      .then((array) => {
+        if (currentPage === 1) {
+          setImagesArray(array);
+          setLoading(false);
+        } else {
+          setImagesArray((prevState) => [...prevState, ...array]);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  };
+
   if (searchValue !== '') {
-    arrayOfImages(currentPage);
+    arrayOfImages();
   }
-}, [searchValue, currentPage, arrayOfImages]);
+}, [searchValue, currentPage]);
+
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
     setLoading(true);
   };
   
-  const arrayOfImages = () => {
-  fetchData(searchValue, currentPage)
-    .then((array) => {
-      if (currentPage === 1) {
-        setImagesArray(array)
-        setLoading(false)
-      } else {
-        setImagesArray((prevState) => [...prevState, ...array])
-        setLoading(false)
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      setLoading(false)
-    })
-  }
 
 
   const updateImagesArray = (array) => {
