@@ -1,5 +1,4 @@
 export const Button = ({ array, nextPage }) => {
-  console.log(array)
   if (array.length !== 0) {
     const handleClick = () => {
       nextPage();

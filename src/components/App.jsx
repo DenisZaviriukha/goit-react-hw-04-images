@@ -24,11 +24,10 @@ export const App = () => {
 
 
   useEffect(() => {
-    if (searchValue !== '') {
+  if (searchValue !== '') {
     arrayOfImages(currentPage);
   }
-  
-}, [currentPage, searchValue]);
+}, [searchValue, currentPage]);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
