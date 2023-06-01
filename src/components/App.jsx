@@ -27,7 +27,7 @@ export const App = () => {
   if (searchValue !== '') {
     arrayOfImages(currentPage);
   }
-}, [searchValue, currentPage]);
+}, [searchValue, currentPage, arrayOfImages]);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
